@@ -7,16 +7,16 @@ class EmailService {
 
   createTransporter() {
     if (process.env.SENDGRID_API_KEY) {
-      // SendGrid config here if you want
-      return nodemailer.createTransport({
+      // SendGrid configuration
+      return nodemailer.createTransporter({
         service: 'SendGrid',
         auth: {
           user: 'apikey',
-          pass: process.env.SENDGRID_API_KEY,
-        },
+          pass: process.env.SENDGRID_API_KEY
+        }
       });
     } else {
-      // Gmail SMTP config
+      // Gmail SMTP configuration
       return nodemailer.createTransport({
         service: process.env.EMAIL_SERVICE || 'gmail',
         host: process.env.EMAIL_HOST,
@@ -24,15 +24,11 @@ class EmailService {
         secure: false,
         auth: {
           user: process.env.EMAIL_USER,
-          pass: process.env.EMAIL_PASS,
-        },
+          pass: process.env.EMAIL_PASS
+        }
       });
     }
   }
-
-  
-
-
 
   async sendWelcomeEmail(email) {
     const mailOptions = {
