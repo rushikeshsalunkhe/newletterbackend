@@ -2,10 +2,10 @@ const nodemailer = require('nodemailer');
 
 class EmailService {
   constructor() {
-    this.transporter = this.createTransporter();
+    this.transporter = this.createTransport();
   }
 
-  createTransporter() {
+  createTransport() {
     if (process.env.SENDGRID_API_KEY) {
       // SendGrid configuration
       return nodemailer.createTransport({
