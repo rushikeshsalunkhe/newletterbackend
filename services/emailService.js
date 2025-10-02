@@ -8,7 +8,8 @@ class EmailService {
   createTransporter() {
     if (process.env.SENDGRID_API_KEY) {
       // SendGrid configuration
-      return nodemailer.createTransporter({
+      return nodemailer.createTransport({
+
         service: 'SendGrid',
         auth: {
           user: 'apikey',
