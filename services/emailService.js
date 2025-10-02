@@ -17,7 +17,7 @@ class EmailService {
       });
     } else {
       // Gmail SMTP configuration
-      return nodemailer.createTransporter({
+      return nodemailer.createTransport({
         service: process.env.EMAIL_SERVICE || 'gmail',
         host: process.env.EMAIL_HOST,
         port: process.env.EMAIL_PORT,
